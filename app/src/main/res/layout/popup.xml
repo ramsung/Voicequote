@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_gravity="center_vertical"
+    android:gravity="center"
+    android:orientation="vertical" >
+
+    <RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:gravity="center"
+
+    android:background="@drawable/rounded_edittext">
+
+
+        <TextView
+            android:id="@+id/lettercount"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:layout_alignLeft="@+id/quote"
+            android:layout_alignParentTop="true"
+            android:layout_alignEnd="@+id/quote"
+            android:text="1000"
+            android:textColor="@color/Gainsboro" />
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/lettercount"
+        android:layout_centerHorizontal="true"
+        android:id="@+id/quote"
+        android:maxLength="1000"
+        android:layout_margin="15dp"
+        android:textSize="22sp"
+        android:hint="Enter Your Quote Here"/>
+
+
+
+        <Button
+            android:id="@+id/setbutton"
+            android:layout_width="wrap_content"
+
+            android:layout_height="wrap_content"
+            android:layout_alignBaseline="@+id/clearbutton"
+            android:layout_alignBottom="@+id/clearbutton"
+            android:layout_alignEnd="@+id/quote"
+            android:layout_alignRight="@+id/quote"
+            android:text="Set" />
+
+        <Button
+            android:id="@+id/clearbutton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/quote"
+            android:layout_margin="10dp"
+
+            android:layout_toLeftOf="@id/setbutton"
+            android:text="Clear" />
+
+        <Button
+            android:id="@+id/backbutton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+
+            android:layout_alignBaseline="@+id/clearbutton"
+            android:layout_alignBottom="@+id/clearbutton"
+            android:layout_alignLeft="@+id/quote"
+            android:layout_alignStart="@+id/quote"
+            android:text="Back" />
+
+    </RelativeLayout>
+
+</LinearLayout>

@@ -5,6 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    android:id="@+id/main_layout"
     tools:context="in.beyonity.rk.voicequote.MainActivity">
 
 <include layout="@layout/menu"/>
