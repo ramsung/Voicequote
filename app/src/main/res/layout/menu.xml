@@ -29,8 +29,8 @@
             android:layout_weight="1"
             android:ems="10"
             android:fontFamily="serif"
+            android:hint="Enter your text here"
             android:inputType="text"
-            android:text="Enter your text here"
             android:textAlignment="center"
             android:textSize="12sp" />
 
