@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item
+        android:id="@+id/feed"
+
+        app:showAsAction="always"
+        android:icon="@drawable/rss"
+        android:title="@string/feed"/>
+    <item
+        android:id="@+id/action_item2"
+        app:showAsAction="always"
+        android:icon="@drawable/note_text"
+        android:title="@string/create"/>
+    <item
+        android:id="@+id/action_item3"
+        app:showAsAction="always"
+        android:icon="@drawable/ticket_account"
+        android:title="@string/profile"/>
+</menu>
