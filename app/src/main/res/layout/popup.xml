@@ -7,36 +7,36 @@
     android:gravity="center"
     android:orientation="vertical" >
 
-    <RelativeLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:gravity="center"
+    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
 
-    android:background="@drawable/rounded_edittext">
+        android:background="@drawable/rounded_edittext"
+        android:gravity="center">
 
 
         <TextView
             android:id="@+id/lettercount"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
+            android:layout_alignEnd="@+id/quote"
             android:layout_alignLeft="@+id/quote"
             android:layout_alignParentTop="true"
-            android:layout_alignEnd="@+id/quote"
-            android:text="1000"
-            android:textColor="@color/Gainsboro" />
-    <EditText
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/lettercount"
-        android:layout_centerHorizontal="true"
-        android:id="@+id/quote"
-        android:maxLength="1000"
-        android:layout_margin="15dp"
-        android:textSize="22sp"
-        android:hint="Enter Your Quote Here"/>
+            android:layout_alignRight="@+id/quote"
+            android:layout_marginTop="10dp"
+            android:text="2000"
+            android:textColor="@color/grey_500" />
 
+        <EditText
+            android:id="@+id/quote"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/lettercount"
+            android:layout_centerHorizontal="true"
+            android:layout_margin="15dp"
+            android:hint="Enter Your Quote Here"
+            android:maxLength="2000"
+            android:textSize="18sp" />
 
 
         <Button
@@ -48,7 +48,9 @@
             android:layout_alignBottom="@+id/clearbutton"
             android:layout_alignEnd="@+id/quote"
             android:layout_alignRight="@+id/quote"
-            android:text="Set" />
+            android:background="@color/blue_grey_700"
+            android:text="Set"
+            android:textSize="18sp" />
 
         <Button
             android:id="@+id/clearbutton"
@@ -58,7 +60,9 @@
             android:layout_margin="10dp"
 
             android:layout_toLeftOf="@id/setbutton"
-            android:text="Clear" />
+            android:background="@color/red_800"
+            android:text="Clear"
+            android:textSize="18sp" />
 
         <Button
             android:id="@+id/backbutton"
@@ -69,7 +73,9 @@
             android:layout_alignBottom="@+id/clearbutton"
             android:layout_alignLeft="@+id/quote"
             android:layout_alignStart="@+id/quote"
-            android:text="Back" />
+            android:background="@color/cyan_800"
+            android:text="Back"
+            android:textSize="18sp" />
 
     </RelativeLayout>
 
