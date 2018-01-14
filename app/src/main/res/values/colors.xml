@@ -63,7 +63,7 @@
     <color name="green_A100">#B9F6CA</color>
     <color name="green_A200">#69F0AE</color>
     <color name="green_A400">#00E676</color>
-    <color name="green_A700">#00C853</color>
+    <color name="green_A700">#00c853</color>
 
     <color name="yellow_50">#FFFDE7</color>
     <color name="yellow_100">#FFF9C4</color>
@@ -229,7 +229,7 @@
     <color name="teal_400">#26A69A</color>
     <color name="teal_500">#009688</color>
     <color name="teal_600">#00897B</color>
-    <color name="teal_700">#00796B</color>
+    <color name="teal_700">#00796b</color>
     <color name="teal_800">#00695C</color>
     <color name="teal_900">#004D40</color>
     <color name="teal_A100">#A7FFEB</color>

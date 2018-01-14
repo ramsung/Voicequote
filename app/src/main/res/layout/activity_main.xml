@@ -13,40 +13,44 @@
     </android.support.v4.view.ViewPager>
 
     <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="30dp"
-        android:gravity="center"
-
         android:id="@+id/bottombuttons"
-        android:layout_alignParentBottom="true">
-
-        <ImageButton
-            android:id="@+id/imageButton12"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:layout_gravity="center"
-            android:onClick="feedClick"
-            android:background="@color/grey_300"
-            app:srcCompat="@drawable/rss" />
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:gravity="center">
 
         <ImageButton
             android:id="@+id/create"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_gravity="center"
             android:layout_weight="1"
-            android:background="@color/amber_300"
-            app:srcCompat="@drawable/note_text"
-            android:onClick="create"/>
+            android:background="@drawable/highlighter"
+            android:elevation="2dp"
+            android:onClick="create"
+            app:srcCompat="@drawable/note_text" />
+
+        <ImageButton
+            android:id="@+id/feed"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_weight="1"
+            android:background="@drawable/highlighter"
+            android:elevation="2dp"
+            android:onClick="feedClick"
+            app:srcCompat="@drawable/rss" />
 
         <ImageButton
             android:id="@+id/prof"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_gravity="center"
             android:layout_weight="1"
-            android:background="@color/blue_grey_900"
-            app:srcCompat="@drawable/ticket_account"
-            android:onClick="prof"/>
+            android:background="@drawable/highlighter"
+            android:elevation="2dp"
+            android:onClick="prof"
+            app:srcCompat="@drawable/ticket_account" />
     </LinearLayout>
 
 </RelativeLayout>
