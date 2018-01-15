@@ -26,7 +26,7 @@ import in.beyonity.rk.voicequote.utils.VisualizerView;
 
 public class RecordingActivity extends AppCompatActivity{
     public static final String DIRECTORY_NAME_TEMP = "AudioTemp";
-    private Handler customHandler = new Handler();
+    public static final int REPEAT_INTERVAL = 40;
     ImageView imageView;
     TextView recordtxt;
     VisualizerView visualizerView;
@@ -65,7 +65,6 @@ public class RecordingActivity extends AppCompatActivity{
 
         // create the Handler for visualizer update
         handler = new Handler();
-        handler.post(updateVisualizer);
     }
 
     OnClickListener recordClick = new OnClickListener() {
@@ -96,13 +95,12 @@ public class RecordingActivity extends AppCompatActivity{
                     recorder.start();
                     isRecording = true; // we are currently recording
                     startHTime = SystemClock.uptimeMillis();
-                   customHandler.post(updateTimerThread);
                 } catch (IllegalStateException e) {
                     e.printStackTrace();
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
-
+                handler.post(updateVisualizer);
 
             } else {
 
@@ -118,7 +116,7 @@ public class RecordingActivity extends AppCompatActivity{
         if (recorder != null) {
             isRecording = false; // stop recording
             timeSwapBuff += timeInMilliseconds;
-            customHandler.removeCallbacks(updateTimerThread);
+            handler.removeCallbacks(updateVisualizer);
             visualizerView.clear();
             recorder.stop();
             recorder.reset();
@@ -151,7 +149,6 @@ public class RecordingActivity extends AppCompatActivity{
     protected void onDestroy() {
 
         super.onDestroy();
-        handler.removeCallbacks(updateVisualizer);
         releaseRecorder();
     }
 
@@ -164,38 +161,22 @@ public class RecordingActivity extends AppCompatActivity{
 
                 // get the current amplitude
                 int x = recorder.getMaxAmplitude();
-                Log.d("Amplitude", "run: "+x);
                 visualizerView.addAmplitude(x); // update the VisualizeView
                 visualizerView.invalidate(); // refresh the VisualizerView
+                timeInMilliseconds = SystemClock.uptimeMillis() - startHTime;
+
+                updatedTime = timeSwapBuff + timeInMilliseconds;
+
+                int secs = (int) (updatedTime / 1000);
+                int mins = secs / 60;
+                secs = secs % 60;
+                if (recordtxt != null)
+                    recordtxt.setText("" + String.format("%02d", mins) + ":"
+                            + String.format("%02d", secs));
                 // update in 40 milliseconds
-
-            }else {
-                int x = 250;
-                Log.d("Amplitude", "run: "+x);
-                visualizerView.addAmplitude(x); // update the VisualizeView
-                visualizerView.invalidate(); // refresh the VisualizerView
+                handler.postDelayed(this, 0);
             }
-
-            handler.postDelayed(this, 40);
         }
-    };
-    private Runnable updateTimerThread = new Runnable() {
-
-        public void run() {
-
-            timeInMilliseconds = SystemClock.uptimeMillis() - startHTime;
-
-            updatedTime = timeSwapBuff + timeInMilliseconds;
-
-            int secs = (int) (updatedTime / 1000);
-            int mins = secs / 60;
-            secs = secs % 60;
-            if (recordtxt != null)
-                recordtxt.setText("" + String.format("%02d", mins) + ":"
-                        + String.format("%02d", secs));
-            customHandler.postDelayed(this, 0);
-        }
-
     };
     public void onRequestPermissionsResult(int requestCode,
                                            String permissions[], int[] grantResults) {
