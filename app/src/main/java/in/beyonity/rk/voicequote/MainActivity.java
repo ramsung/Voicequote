@@ -1,5 +1,6 @@
 package in.beyonity.rk.voicequote;
 
+import android.content.Intent;
 import android.databinding.DataBindingUtil;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -53,6 +54,8 @@ public class MainActivity extends AppCompatActivity {
 
                 }else if(item.getItemId() == R.id.profile){
                     bind.vg.setCurrentItem(2);
+                    Intent i  = new Intent(MainActivity.this,RecordingActivity.class);
+                    startActivity(i);
                 }
                 return true;
             }
