@@ -170,10 +170,18 @@ public class RecordingActivity extends AppCompatActivity{
                 int secs = (int) (updatedTime / 1000);
                 int mins = secs / 60;
                 secs = secs % 60;
-                if (recordtxt != null)
-                    recordtxt.setText("" + String.format("%02d", mins) + ":"
-                            + String.format("%02d", secs));
-                // update in 40 milliseconds
+                if(secs <= 30){
+                    if (recordtxt != null)
+                        recordtxt.setText("" + String.format("%02d", mins) + ":"
+                                + String.format("%02d", secs));
+
+                }else {
+                    imageView.setImageResource(R.drawable.ic_mic_black_24dp);
+
+                    releaseRecorder();
+                }
+
+
                 handler.postDelayed(this, 0);
             }
         }
