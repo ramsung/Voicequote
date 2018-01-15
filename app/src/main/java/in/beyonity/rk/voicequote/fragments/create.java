@@ -1,10 +1,8 @@
 package in.beyonity.rk.voicequote.fragments;
 
-import android.content.Context;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
-import android.support.v4.view.ViewPager;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.Gravity;
@@ -78,7 +76,7 @@ public class create extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-       v = inflater.inflate(R.layout.menu,container,false);
+       v = inflater.inflate(R.layout.fragment_create,container,false);
         quotetext = (TextView) v.findViewById(R.id.quotetext);
 
         quotetext.setOnClickListener(new View.OnClickListener() {
@@ -87,10 +85,10 @@ public class create extends Fragment {
                 final LinearLayout mainLayout = (LinearLayout)
                         v.findViewById(R.id.main_layout);
                 final PopupWindow popupWindow;
-                // inflate the layout of the popup window
+                // inflate the layout of the text_popup window
                 LayoutInflater inflater = (LayoutInflater)
                         getActivity().getSystemService(LAYOUT_INFLATER_SERVICE);
-                final View popupView = inflater.inflate(R.layout.popup, null);
+                final View popupView = inflater.inflate(R.layout.text_popup, null);
 
                 String text = quotetext.getText().toString();
                 final EditText quote = (EditText) popupView.findViewById(R.id.quote);
@@ -109,16 +107,16 @@ public class create extends Fragment {
 
 
 
-                // create the popup window
+                // create the text_popup window
                 int width = LinearLayout.LayoutParams.WRAP_CONTENT;
                 int height = LinearLayout.LayoutParams.WRAP_CONTENT;
-                boolean focusable = true; // lets taps outside the popup also dismiss it
+                boolean focusable = true; // lets taps outside the text_popup also dismiss it
                 popupWindow = new PopupWindow(popupView, width, height, focusable);
 
-                // show the popup window
+                // show the text_popup window
                 popupWindow.showAtLocation(mainLayout, Gravity.CENTER, 0, 0);
 
-                // dismiss the popup window when touched
+                // dismiss the text_popup window when touched
                 /*popupView.setOnTouchListener(new View.OnTouchListener() {
                     @Override
                     public boolean onTouch(View v, MotionEvent event) {

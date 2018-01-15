@@ -1,6 +1,5 @@
 package in.beyonity.rk.voicequote.fragments;
 
-import android.content.Context;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -65,7 +64,7 @@ public class profile extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        p = inflater.inflate(R.layout.activity_profile, container, false);
+        p = inflater.inflate(R.layout.fragment_profile, container, false);
         return p;
     }
 

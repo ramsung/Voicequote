@@ -1,4 +1,38 @@
 <?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data></data>
+
+
+<RelativeLayout xmlns:tools="http://schemas.android.com/tools"
+
+    android:id="@+id/activity_with_view_pager"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+
+        <in.beyonity.rk.voicequote.utils.BottomNavigationViewEx
+            android:id="@+id/bnve"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:background="@android:color/white"
+            app:itemIconTint="@color/selector_item_primary_color"
+            app:itemTextColor="@color/selector_item_primary_color"
+            app:menu="@menu/bottomnavigationmenu" />
+
+    <android.support.v4.view.ViewPager
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/vg"
+        android:layout_above="@+id/bnve">
+    </android.support.v4.view.ViewPager>
+
+    </RelativeLayout>
+</layout>
+
+<!--<?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout android:layout_height="match_parent"
     android:layout_width="match_parent"
     xmlns:android="http://schemas.android.com/apk/res/android"
@@ -9,15 +43,10 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:id="@+id/vg"
-        android:layout_above="@+id/bottombuttons">
+        android:layout_above="@+id/bnve">
     </android.support.v4.view.ViewPager>
 
-    <LinearLayout
-        android:id="@+id/bottombuttons"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:gravity="center">
+
 
         <ImageButton
             android:id="@+id/create"
@@ -25,6 +54,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:layout_weight="1"
+            android:paddingTop="5dp"
             android:background="@drawable/highlighter"
             android:elevation="2dp"
             android:onClick="create"
@@ -36,6 +66,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:layout_weight="1"
+            android:paddingTop="5dp"
             android:background="@drawable/highlighter"
             android:elevation="2dp"
             android:onClick="feedClick"
@@ -47,11 +78,22 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:layout_weight="1"
+            android:paddingTop="5dp"
             android:background="@drawable/highlighter"
             android:elevation="2dp"
             android:onClick="prof"
             app:srcCompat="@drawable/ticket_account" />
-    </LinearLayout>
+    <com.ittianyu.bottomnavigationviewex.BottomNavigationViewEx
+        android:id="@+id/bnve"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:background="@color/colorPrimary"
+        app:itemIconTint="@color/selector_item_gray_color"
+        app:itemTextColor="@color/selector_item_gray_color">
+    </com.ittianyu.bottomnavigationviewex.BottomNavigationViewEx>
 
-</RelativeLayout>
+
+
+</RelativeLayout>-->
 
