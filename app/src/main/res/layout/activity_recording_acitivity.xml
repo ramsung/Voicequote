@@ -50,9 +50,9 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
         <ImageButton
-            android:id="@+id/imageButton15"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:id="@+id/playbutton"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
             android:layout_gravity="center"
             android:background="@android:color/transparent"
             android:paddingEnd="10dp"
@@ -61,7 +61,7 @@
             android:paddingStart="10dp"
             app:srcCompat="@drawable/play" />
         <SeekBar
-            android:id="@+id/seekBar3"
+            android:id="@+id/seekBar"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
@@ -69,8 +69,8 @@
 
         <ImageButton
             android:id="@+id/deletebutton"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
             android:layout_gravity="center"
             android:background="@android:color/transparent"
             android:paddingEnd="10dp"
