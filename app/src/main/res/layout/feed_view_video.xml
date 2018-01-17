@@ -79,45 +79,100 @@
 
         <android.support.v7.widget.CardView
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="horizontal">
+            android:layout_height="wrap_content"
+            app:cardElevation="3dp">
 
-            <Button
-                android:id="@+id/imageButton12"
-                android:layout_width="wrap_content"
-                android:layout_height="30dp"
-                android:layout_weight="1"
-                android:background="@android:color/transparent"
-                android:drawableLeft="@drawable/star"
-                android:fontFamily="@font/quicksand_bold"
-                android:text="Like"
-                android:textAlignment="center" />
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_gravity="center"
+                android:gravity="left|center"
+                android:orientation="horizontal">
 
-            <Button
-                android:id="@+id/imageButton13"
-                android:layout_width="wrap_content"
-                android:layout_height="30dp"
-                android:layout_weight="1"
-                android:background="@android:color/transparent"
-                android:drawableLeft="@drawable/comment"
-                android:fontFamily="@font/quicksand_bold"
-                android:text="Comment"
-                android:textAlignment="center" />
+                <Button
+                    android:id="@+id/imageButton12"
+                    android:layout_width="40dp"
+                    android:layout_height="25dp"
+                    android:layout_marginEnd="5dp"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginRight="5dp"
+                    android:layout_marginStart="3dp"
+                    android:background="@android:color/holo_blue_dark"
+                    android:fontFamily="@font/quicksand_bold"
+                    android:text="Like"
+                    android:textAlignment="center"
+                    android:textSize="12sp" />
 
-            <Button
-                android:id="@+id/imageButton14"
-                android:layout_width="wrap_content"
-                android:layout_height="30dp"
-                android:layout_weight="1"
-                android:background="@android:color/transparent"
-                android:drawableStart="@drawable/share"
-                android:fontFamily="@font/quicksand_bold"
-                android:text="Share"
-                android:textAlignment="center"/>
-        </LinearLayout>
+                <ImageButton
+                    android:id="@+id/comment"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:background="@android:color/transparent"
+                    android:src="@drawable/comment_outline" />
+
+                <TextView
+                    android:id="@+id/textView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:background="@color/amber_900"
+                    android:fontFamily="@font/quicksand_bold"
+                    android:text="Share"
+                    android:textAlignment="center"
+                    android:textAllCaps="false"
+                    android:textColor="@android:color/white"
+                    android:textSize="15sp"
+                    android:textStyle="bold|italic" />
+
+                <ImageButton
+                    android:id="@+id/imageButton11"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:background="@color/amber_900"
+                    app:srcCompat="@drawable/facebook_box" />
+
+                <ImageButton
+                    android:id="@+id/imageButton13"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:background="@color/amber_900"
+                    app:srcCompat="@drawable/instagram" />
+
+                <ImageButton
+                    android:id="@+id/imageButton14"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:background="@color/amber_900"
+                    app:srcCompat="@drawable/whatsapp" />
+
+                <ImageButton
+                    android:id="@+id/imageButton15"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:background="@color/amber_900"
+                    app:srcCompat="@drawable/telegram" />
+
+                <ImageButton
+                    android:id="@+id/imageButton16"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:background="@color/amber_900"
+                    app:srcCompat="@drawable/twitter_box" />
+
+                <ImageButton
+                    android:id="@+id/share"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:background="@color/amber_900"
+                    android:src="@drawable/share" />
+            </LinearLayout>
         </android.support.v7.widget.CardView>
     </LinearLayout>
 
