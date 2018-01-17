@@ -43,6 +43,7 @@ public class MainActivity extends AppCompatActivity {
         adapter.addFragment(p);
         bind.vg.setAdapter(adapter);
 
+        bind.vg.setOffscreenPageLimit(3);
         bind.bnve.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {

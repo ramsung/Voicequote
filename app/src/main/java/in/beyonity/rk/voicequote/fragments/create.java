@@ -1,7 +1,15 @@
 package in.beyonity.rk.voicequote.fragments;
 
 import android.Manifest;
+import android.app.AlertDialog;
+import android.content.Context;
+import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.graphics.Color;
+import android.graphics.Paint;
+import android.graphics.Point;
 import android.media.MediaPlayer;
 import android.media.MediaRecorder;
 import android.net.Uri;
@@ -12,14 +20,20 @@ import android.os.SystemClock;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.Fragment;
 import android.text.Editable;
+import android.text.Layout;
 import android.text.TextWatcher;
 import android.util.Log;
+import android.view.Display;
 import android.view.Gravity;
 import android.view.LayoutInflater;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.WindowManager;
+import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.GridView;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -28,15 +42,23 @@ import android.widget.SeekBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.io.ByteArrayOutputStream;
 import java.io.File;
+import java.io.FileOutputStream;
 import java.io.IOException;
+import java.util.Random;
 import java.util.concurrent.TimeUnit;
 
+import in.beyonity.rk.voicequote.DynamicSquareLayout;
+import in.beyonity.rk.voicequote.MainActivity;
 import in.beyonity.rk.voicequote.R;
+import in.beyonity.rk.voicequote.outputimage;
+import in.beyonity.rk.voicequote.utils.ColorPicker;
 import in.beyonity.rk.voicequote.utils.VisualizerView;
 
 import static android.content.ContentValues.TAG;
 import static android.content.Context.LAYOUT_INFLATER_SERVICE;
+import static android.view.Gravity.CENTER;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -58,13 +80,22 @@ public class create extends Fragment {
     ImageButton voice;
     ImageButton play;
     ImageButton delete;
+    ImageButton colorPicker;
+        ImageView batman;
+        SeekBar fontSize;
+
+    ImageButton justify,alignleft,alignright,aligncenter,strike;
+
+    ImageView share;
     SeekBar seekBar;
+    DynamicSquareLayout mainview;
     TextView quotetext;
+    TextView maintext;
     boolean paused = false,resumed = false,started = false;
     int maxChar =  2000;
     View v;
     MediaPlayer player;
-
+    float dX, dY;
     //recording
     ImageView imageView;
     TextView recordtxt;
@@ -78,7 +109,7 @@ public class create extends Fragment {
     File audioDirTemp;
     private boolean isRecording = false;
 
-
+    private int mPickedColor = Color.WHITE;
     private Handler handler;
     private Handler seekbarHandler = new Handler();
 
@@ -124,10 +155,168 @@ public class create extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
+        ActivityCompat.requestPermissions(getActivity(),new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE,Manifest.permission.RECORD_AUDIO},1);
        v = inflater.inflate(R.layout.fragment_create,container,false);
+        audioDirTemp = new File(Environment.getExternalStorageDirectory(),
+                DIRECTORY_NAME_TEMP);
+        if (audioDirTemp.exists()) {
+            //deleteFilesInDir(audioDirTemp);
+        } else {
+            audioDirTemp.mkdirs();
+        }
+        fontSize =(SeekBar) v.findViewById(R.id.fontSize);
+        fontSize.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
+            @Override
+            public void onProgressChanged(SeekBar seekBar, int i, boolean b) {
+                if(i>0){
+                    int size = i * 6;
+                    maintext.setTextSize((float)size);
 
+                }
+            }
+
+            @Override
+            public void onStartTrackingTouch(SeekBar seekBar) {
+
+            }
+
+            @Override
+            public void onStopTrackingTouch(SeekBar seekBar) {
+
+            }
+        });
+
+        //alignment
+        ImageButton.OnClickListener alignment = new ImageButton.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if(view.getId() == R.id.justify){
+
+                }else if(view.getId() == R.id.alignCenter){
+                    maintext.setTextAlignment(View.TEXT_ALIGNMENT_CENTER);
+                    String value = maintext.getText().toString();
+                    maintext.setText(value);
+                    maintext.invalidate();
+                    maintext.setPaintFlags(maintext.getPaintFlags() | Paint.STRIKE_THRU_TEXT_FLAG);
+                }else if(view.getId() ==  R.id.alignleft){
+                    maintext.setTextAlignment(View.TEXT_ALIGNMENT_VIEW_START);
+                    String value = maintext.getText().toString();
+                    maintext.setText(value);
+                }else if(view.getId() == R.id.alignright){
+                    maintext.setTextAlignment(View.TEXT_ALIGNMENT_TEXT_END);
+                    String value = maintext.getText().toString();
+                    maintext.setText(value);
+                }else if(view.getId() == R.id.strike){
+                    if((maintext.getPaintFlags() & Paint.STRIKE_THRU_TEXT_FLAG) == Paint.STRIKE_THRU_TEXT_FLAG) {
+                        maintext.setPaintFlags(maintext.getPaintFlags() ^ Paint.STRIKE_THRU_TEXT_FLAG);
+                    }else {
+                        maintext.setPaintFlags(maintext.getPaintFlags() ^ Paint.STRIKE_THRU_TEXT_FLAG);
+                    }
+                }
+            }
+        };
+       justify = (ImageButton) v.findViewById(R.id.justify);
+       alignleft = (ImageButton) v.findViewById(R.id.alignleft);
+       aligncenter= (ImageButton) v.findViewById(R.id.alignCenter);
+       alignright= (ImageButton) v.findViewById(R.id.alignright);
+       strike = (ImageButton) v.findViewById(R.id.strike);
+
+       justify.setOnClickListener(alignment);
+       alignright.setOnClickListener(alignment);
+       alignleft.setOnClickListener(alignment);
+       aligncenter.setOnClickListener(alignment);
+       strike.setOnClickListener(alignment);
+
+
+
+
+
+        colorPicker = (ImageButton) v.findViewById(R.id.colorpicker);
+        colorPicker.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                GridView gv = (GridView) ColorPicker.getColorPicker(getActivity());
+
+                // Initialize a new AlertDialog.Builder object
+                AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
+
+                // Set the alert dialog content to GridView (color picker)
+                builder.setView(gv);
+                final LinearLayout rl = (LinearLayout) v.findViewById(R.id.main_layout);
+                // Initialize a new AlertDialog object
+                final AlertDialog dialog = builder.create();
+
+                // Show the color picker window
+                dialog.show();
+
+                // Set the color picker dialog size
+                dialog.getWindow().setLayout(
+                        getScreenSize().x,
+                        getScreenSize().y/2);
+                dialog.getWindow().setGravity(CENTER);
+
+                // Set an item click listener for GridView widget
+                gv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                    @Override
+                    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                        // Get the pickedColor from AdapterView
+                        mPickedColor = (int) parent.getItemAtPosition(position);
+
+                        // Set the layout background color as picked color
+                        maintext.setTextColor(mPickedColor);
+
+                        // close the color picker
+                        dialog.dismiss();
+                    }
+                });
+            }
+
+
+        });
        voice = (ImageButton) v.findViewById(R.id.voice);
+       mainview = (DynamicSquareLayout) v.findViewById(R.id.dynamicview);
+       batman = (ImageView) v.findViewById(R.id.batman);
+       share = (ImageView) v.findViewById(R.id.share);
+       share.setOnClickListener(new View.OnClickListener() {
+           @Override
+           public void onClick(View view) {
+               getImage();
+           }
+       });
+       batman.setOnClickListener(new View.OnClickListener() {
+           @Override
+           public void onClick(View view) {
+               mainview.setBackgroundResource(R.drawable.batman);
+           }
+       });
+        maintext = (TextView) v.findViewById(R.id.maintext);
+        maintext.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View view, MotionEvent event) {
+                switch (event.getAction()) {
 
+                    case MotionEvent.ACTION_DOWN:
+
+                        dX = view.getX() - event.getRawX();
+                        dY = view.getY() - event.getRawY();
+                        Log.d(TAG, "onTouch: x = "+view.getX()+"y = "+view.getY()+" event x = "+event.getRawX()+ " event y = "+event.getRawY());
+                        Log.d(TAG, "onTouch: dx  ="+dX+" dy = "+dY);
+                        break;
+
+                    case MotionEvent.ACTION_MOVE:
+
+                        view.animate()
+                                .x(event.getRawX() + dX)
+                                .y(event.getRawY() + dY)
+                                .setDuration(0)
+                                .start();
+                        break;
+                    default:
+                        return false;
+                }
+                return true;
+            }
+        });
         handler = new Handler();
        voice.setOnClickListener(new View.OnClickListener() {
            @Override
@@ -155,7 +344,7 @@ public class create extends Fragment {
                popupWindow = new PopupWindow(popupView, width, height, focusable);
                popupWindow.setOutsideTouchable(false);
                // show the text_popup window
-               popupWindow.showAtLocation(mainLayout, Gravity.CENTER, 0, 0);
+               popupWindow.showAtLocation(mainLayout, CENTER, 0, 0);
                visualizerView = (VisualizerView) popupView.findViewById(R.id.visualizer);
                imageView = (ImageView) popupView.findViewById(R.id.RecordButton);
                recordtxt = (TextView) popupView.findViewById(R.id.recordtxt);
@@ -380,7 +569,7 @@ public class create extends Fragment {
                 popupWindow = new PopupWindow(popupView, width, height, focusable);
 
                 // show the text_popup window
-                popupWindow.showAtLocation(mainLayout, Gravity.CENTER, 0, 0);
+                popupWindow.showAtLocation(mainLayout, CENTER, 0, 0);
 
 
                 // dismiss the text_popup window when touched
@@ -398,6 +587,7 @@ public class create extends Fragment {
                         String newText = quote.getText().toString();
 
                         quotetext.setText(newText);
+                        maintext.setText(newText);
 
 
                         popupWindow.dismiss();
@@ -602,4 +792,54 @@ public class create extends Fragment {
         }
     };
 
+    public void getImage(){
+        mainview.setDrawingCacheEnabled(true);
+        mainview.buildDrawingCache(true);
+        Bitmap b = Bitmap.createBitmap(mainview.getDrawingCache());
+        mainview.setDrawingCacheEnabled(false);
+
+        SaveImage(b);
+    }
+
+    private void SaveImage(Bitmap finalBitmap) {
+
+
+
+        File myDir = new File(audioDirTemp.getPath());
+        myDir.mkdirs();
+        Random generator = new Random();
+        int n = 10000;
+        n = generator.nextInt(n);
+        String fname = "Image-"+ n +".jpg";
+        File file = new File (myDir, fname);
+        if (file.exists ()) file.delete ();
+        try {
+            FileOutputStream out = new FileOutputStream(file);
+            finalBitmap.compress(Bitmap.CompressFormat.JPEG, 90, out);
+            out.flush();
+            out.close();
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    private Point getScreenSize(){
+        WindowManager wm = (WindowManager)getContext().getSystemService(Context.WINDOW_SERVICE);
+        Display display = wm.getDefaultDisplay();
+        Point size = new Point();
+        //Display dimensions in pixels
+        display.getSize(size);
+        return size;
+    }
+
+    // Custom method to get status bar height in pixels
+    public int getStatusBarHeight() {
+        int height = 0;
+        int resourceId = getResources().getIdentifier("status_bar_height", "dimen", "android");
+        if (resourceId > 0) {
+            height = getResources().getDimensionPixelSize(resourceId);
+        }
+        return height;
+    }
 }
