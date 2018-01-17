@@ -19,6 +19,7 @@
             android:layout_gravity="center"
             android:layout_weight="1"
             android:background="@android:color/transparent"
+            android:onClick="android"
             app:srcCompat="@drawable/microphone_variant" />
 
         <TextView

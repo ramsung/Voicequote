@@ -93,33 +93,26 @@
         android:textSize="18sp"
         android:textStyle="bold" />
 
-    <LinearLayout
+
+    <TextView
+        android:id="@+id/button4"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:orientation="horizontal">
+        android:layout_gravity="center"
+        android:layout_marginBottom="3dp"
+        android:layout_marginTop="3dp"
+        android:background="@color/light_blue_900"
+        android:fontFamily="@font/quicksand_bold"
+        android:gravity="center"
+        android:padding="5dp"
+        android:text="Add Background music"
+        android:textSize="18sp" />
 
-        <Button
-            android:id="@+id/button4"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_weight="1"
-            android:background="@color/light_blue_900"
-            android:fontFamily="@font/quicksand_bold"
-            android:padding="5dp"
-            android:text="Add bg music"
-            android:textSize="18sp" />
-
-
-
-    </LinearLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_weight="1"
-        android:background="@color/grey_100"
+        android:background="@color/green_300"
         android:orientation="vertical">
 
         <LinearLayout
@@ -134,7 +127,7 @@
                 android:gravity="center"
                 android:paddingLeft="5dp"
                 android:paddingStart="5dp"
-                android:text="Happy"
+                android:text="Music 1"
                 android:textAlignment="viewStart"
                 android:textColor="@color/black" />
 
@@ -168,7 +161,7 @@
                 android:gravity="center"
                 android:paddingLeft="5dp"
                 android:paddingStart="5dp"
-                android:text="Sad"
+                android:text="Music 2"
                 android:textAlignment="viewStart"
                 android:textColor="@color/black" />
 
@@ -202,7 +195,7 @@
                 android:gravity="center"
                 android:paddingLeft="5dp"
                 android:paddingStart="5dp"
-                android:text="Motivational"
+                android:text="Music 3"
                 android:textAlignment="viewStart"
                 android:textColor="@color/black" />
 
@@ -236,7 +229,7 @@
                 android:gravity="center"
                 android:paddingLeft="5dp"
                 android:paddingStart="5dp"
-                android:text="Curiosity"
+                android:text="Music 4"
                 android:textAlignment="viewStart"
                 android:textColor="@color/black" />
 
@@ -270,7 +263,177 @@
                 android:gravity="center"
                 android:paddingLeft="5dp"
                 android:paddingStart="5dp"
-                android:text="Love"
+                android:text="Music 5"
+                android:textAlignment="viewStart"
+                android:textColor="@color/black" />
+
+            <ImageButton
+
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="5dp"
+                android:layout_marginRight="5dp"
+                android:background="@android:color/transparent"
+                app:srcCompat="@drawable/play" />
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="30dp"
+                android:background="@color/blue_grey_600"
+                android:fontFamily="@font/quicksand_bold"
+                android:text="add"
+                android:textStyle="bold" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:paddingLeft="5dp"
+                android:paddingStart="5dp"
+                android:text="Music 6"
+                android:textAlignment="viewStart"
+                android:textColor="@color/black" />
+
+            <ImageButton
+
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="5dp"
+                android:layout_marginRight="5dp"
+                android:background="@android:color/transparent"
+                app:srcCompat="@drawable/play" />
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="30dp"
+                android:background="@color/blue_grey_600"
+                android:fontFamily="@font/quicksand_bold"
+                android:text="add"
+                android:textStyle="bold" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:paddingLeft="5dp"
+                android:paddingStart="5dp"
+                android:text="Music 7"
+                android:textAlignment="viewStart"
+                android:textColor="@color/black" />
+
+            <ImageButton
+
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="5dp"
+                android:layout_marginRight="5dp"
+                android:background="@android:color/transparent"
+                app:srcCompat="@drawable/play" />
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="30dp"
+                android:background="@color/blue_grey_600"
+                android:fontFamily="@font/quicksand_bold"
+                android:text="add"
+                android:textStyle="bold" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:paddingLeft="5dp"
+                android:paddingStart="5dp"
+                android:text="Music 8"
+                android:textAlignment="viewStart"
+                android:textColor="@color/black" />
+
+            <ImageButton
+
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="5dp"
+                android:layout_marginRight="5dp"
+                android:background="@android:color/transparent"
+                app:srcCompat="@drawable/play" />
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="30dp"
+                android:background="@color/blue_grey_600"
+                android:fontFamily="@font/quicksand_bold"
+                android:text="add"
+                android:textStyle="bold" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:paddingLeft="5dp"
+                android:paddingStart="5dp"
+                android:text="Music 9"
+                android:textAlignment="viewStart"
+                android:textColor="@color/black" />
+
+            <ImageButton
+
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="5dp"
+                android:layout_marginRight="5dp"
+                android:background="@android:color/transparent"
+                app:srcCompat="@drawable/play" />
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="30dp"
+                android:background="@color/blue_grey_600"
+                android:fontFamily="@font/quicksand_bold"
+                android:text="add"
+                android:textStyle="bold" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:paddingLeft="5dp"
+                android:paddingStart="5dp"
+                android:text="Music 10"
                 android:textAlignment="viewStart"
                 android:textColor="@color/black" />
 
