@@ -1,7 +1,8 @@
-package in.beyonity.rk.voicequote.squarelayout;
+package in.beyonity.rk.voicequote;
 
 import android.content.Context;
 import android.util.AttributeSet;
+import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 
 /**
@@ -9,7 +10,7 @@ import android.widget.RelativeLayout;
  */
 
 //Replace RelativeLayout with any layout of your choice
-public class DynamicSquareLayout  extends RelativeLayout {
+public class DynamicSquareLayout extends LinearLayout {
 
     public DynamicSquareLayout(Context context) {
         super(context);
@@ -30,9 +31,14 @@ public class DynamicSquareLayout  extends RelativeLayout {
 
     @Override
     public void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
+
         super.onMeasure(widthMeasureSpec, widthMeasureSpec);
-        int size = MeasureSpec.getSize(widthMeasureSpec);
+        int width = MeasureSpec.getSize(widthMeasureSpec);
+        int height = MeasureSpec.getSize(heightMeasureSpec);
+        int size = width > height ? height : width;
         setMeasuredDimension(size, size);
+
+
     }
 }
 

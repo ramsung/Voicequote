@@ -55,23 +55,19 @@
             android:layout_marginTop="2dp"
             android:background="@color/blue_grey_500" />
 
-        <android.support.constraint.ConstraintLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            app:layout_constraintDimensionRatio="w,1:1">
+        <in.beyonity.rk.voicequote.DynamicSquareLayout
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:layout_gravity="center_horizontal"
+            android:orientation="horizontal">
+
 
             <VideoView
-                android:id="@+id/videoView"
+                android:id="@+id/videoView2"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
-
-        </android.support.constraint.ConstraintLayout>
+                android:layout_height="wrap_content"
+                android:layout_weight="1" />
+        </in.beyonity.rk.voicequote.DynamicSquareLayout>
 
         <view
             android:id="@+id/view"
