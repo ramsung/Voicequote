@@ -21,10 +21,10 @@
         <ImageButton
             android:id="@+id/voice"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:layout_gravity="center"
             android:layout_weight="1"
-            android:background="@android:color/transparent"
+            android:background="@color/red_900"
             android:onClick="android"
             app:srcCompat="@drawable/microphone_variant" />
 
